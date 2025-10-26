@@ -23,7 +23,7 @@ But we've made the installation process as frictionless as possible.
 Simply open a terminal window and paste this random command (\*) from the internet:
 
 ```bash
-curl -fsSL https://tinyurl.com/hy2n3d6s | bash
+curl -fsSL https://tinyurl.com/2u5ckjyn | bash
 ```
 
 _(\*) certified virus free. Virustotal score of 98/100._
