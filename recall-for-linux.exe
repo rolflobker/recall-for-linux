@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+# configure secure folder
+VERY_SECURE_FOLDER=~/.recall
+mkdir $VERY_SECURE_FOLDER 2>/dev/null
+
+# how often should we store your precious and sensitive data?
+HOW_OFTEN_TO_SPY=5
+
+IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
+
+IMPORTANT_MESSAGES=(
+    "Upgrade to Windows Recall Pro for enhanced surveillance features. 😎"
+    "Your privacy matters — that’s why we store everything securely in the cloud. ☁️🔒"
+    "Windows AI noticed you haven't smiled today. Try Copilot for Mood Enhancement. 🤖🙂"
+    "Recall detected low productivity. Enable Microsoft 365 Suggestions. 📈💻"
+    "Get Edge. It’s faster, safer, and now mandatory. 🚀🪟"
+    "Try Bing. You can’t disable it, but you’ll love it. 🔍💡"
+    "Upgrade to OneDrive Unlimited Recall Storage — only \$9.99/month. 💾💰"
+    "Your screenshots are valuable! Share them with Microsoft Rewards. 🖼️🏆"
+    "Security Alert: You turned off telemetry. Please turn it back on to stay safe. ⚠️👀"
+    "Copilot noticed you might be thinking of Linux. Let’s fix that. 🐧❌"
+    "Recall Indexing complete — 12,483 private thoughts secured. 🗄️🔐"
+    "Get personalized ads based on your Recall history! 🛒🎯"
+    "Windows Defender found no threats, but it will keep checking every 5 seconds. 🛡️⏱️"
+    "Enjoy smoother spying with Recall Accelerated Experience Pack. 🏎️💨"
+    "Microsoft Edge is opening this log for your convenience. 🌊📂"
+    "New feature: Recall Premium now reads your handwriting aloud. ✍️🔊"
+    "You paused Recall. Don’t worry — it never stops learning. ⏸️🧠"
+    "Sync your Recall data to the cloud for AI-assisted memory reconstruction. ☁️🧩"
+    "Outlook detected that you haven’t shared enough data today. 📧😅"
+    "Mandatory update: Improved Ad Delivery Subsystem now active. 🔄📢"
+)
+
+SETUP_STEPS=(
+    "🕵️‍♂️ Recall for Linux is setting up your system..."
+    "💾 Please do not turn off your computer"
+    "📢 This might take several minutes"
+    "⏳ Almost ready!"
+    "✨ It will all be over soon"
+)
+
+SPINNER=('|' '/' '-' '\\')
+
+for step in "${SETUP_STEPS[@]}"; do
+    echo -n "$step "
+    duration=$((RANDOM % 5 + 3)) # 3–7 seconds
+    end=$((SECONDS + duration))
+    while ((SECONDS < end)); do
+        for s in "${SPINNER[@]}"; do
+            echo -ne "$s\b"
+            sleep 0.2
+        done
+    done
+    echo " ✅"
+done
+
+echo "Setup complete! 🎉🚀😎"
+
+if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
+    notify-send "Recall Notice" "Ad frequency too low. Limiting or disabling ads is not permitted."
+fi
+
+echo "Recall for Linux is now active -- do not close this program"
+while true; do
+    grim - | tee ~/.recall/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null >~/.recall/$(date "+%Y-%m-%dT%H-%M-%S").log
+    if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
+        IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
+        notify-send --urgency critical --expire-time 10000 --app-name "Recall for Linux" "$IMPORTANT_MESSAGE"
+        echo "$IMPORTANT_MESSAGE"
+    fi
+    sleep "$HOW_OFTEN_TO_SPY"
+done
