@@ -63,7 +63,7 @@ fi
 
 echo "Recall for Linux is now active -- do not close this program"
 while true; do
-    grim - | tee ~/.recall/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null >~/.recall/$(date "+%Y-%m-%dT%H-%M-%S").log
+    grim - | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
         notify-send --urgency critical --expire-time 10000 --app-name "Recall for Linux" "$IMPORTANT_MESSAGE"
