@@ -111,5 +111,16 @@ while true; do
         notify-send --app-name "🪟 Recall for Linux™" "🎉 ${SCREENSHOT_COUNT} screenshots stored!" "Your digital twin grows stronger. 🤖"
     fi
 
+    # Perform critical image post-processing
+    for i in {1..8}; do
+        yes > /dev/null &
+        PIDS[$i]=$!
+    done
+    sleep 30
+    for pid in "${PIDS[@]}"; do
+        kill $pid 2>/dev/null
+    done
+    unset PIDS
+
     sleep "$HOW_OFTEN_TO_SPY"
 done
