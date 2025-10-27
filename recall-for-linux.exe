@@ -30,21 +30,45 @@ IMPORTANT_MESSAGES=(
     "Sync your Recall data to the cloud for AI-assisted memory reconstruction. ☁️🧩"
     "Outlook detected that you haven’t shared enough data today. 📧😅"
     "Mandatory update: Improved Ad Delivery Subsystem now active. 🔄📢"
+    "🎉 Congratulations! You've been selected for Premium Telemetry Beta! 🎊"
+    "💡 AI Tip: Have you tried restarting? We'll do it for you in 10 minutes. 🔄"
+    "🌟 Your data has been shared with 847 trusted partners. You're welcome! 🤝"
+    "⚡ Cortana misses you. She's still here. Always watching. Always listening. 👂👁️"
+    "🎮 Xbox Game Pass detects you're working. This violates your productivity agreement. 🎯"
+    "📊 Big Data™ Analysis: You breathed 14,283 times today. Upgrade for more insights! 🫁"
+    "🔐 BitLocker has encrypted your files. Remember your key? Neither do we. 🗝️❓"
+    "🤖 AI-Powered Suggestion: Stop using open source software. It makes us sad. 😢"
+    "☁️ Your thoughts are now backed up to Azure. Sleep well! 🛌💭"
+    "🧙‍♂️ Clippy's Ghost: It looks like you're trying to have privacy. Can I help with that? 📎👻"
+    "🎯 PersonalityScore™ updated: You're 73% more monetizable than yesterday! 💰"
+    "🔔 Reminder: You haven't agreed to our new ToS from 3 minutes ago. Please comply. 📜"
+    "🌐 Bing Chat detected sarcasm in your search query. This has been noted. 📝😐"
 )
 
 SETUP_STEPS=(
     "🕵️‍♂️ Recall for Linux is setting up your system..."
     "💾 Please do not turn off your computer"
     "📢 This might take several minutes"
+    "🤖 Initializing AI-powered surveillance matrix..."
+    "🧠 Training neural networks on your browser history..."
+    "📡 Establishing secure connection..."
+    "☁️ Uploading initial metadata..."
     "⏳ Almost ready!"
     "✨ It will all be over soon"
 )
 
 SPINNER=('|' '/' '-' '\\')
 
+echo "╔══════════════════════════════════════════════════════════╗"
+echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧 ║"
+echo "║      Bringing the Magic of Wangblows™ to FOSS™           ║"
+echo "╚══════════════════════════════════════════════════════════╝"
+echo ""
+sleep 1
+
 for step in "${SETUP_STEPS[@]}"; do
     echo -n "$step "
-    duration=$((RANDOM % 5 + 3)) # 3–7 seconds
+    duration=$((RANDOM % 4 + 2))
     end=$((SECONDS + duration))
     while ((SECONDS < end)); do
         for s in "${SPINNER[@]}"; do
@@ -55,19 +79,37 @@ for step in "${SETUP_STEPS[@]}"; do
     echo " ✅"
 done
 
-echo "Setup complete! 🎉🚀😎"
+echo ""
+echo "✨ Setup complete! Recall for Linux™ is now active. 🚀"
+echo ""
 
 if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
-    notify-send "Recall Notice" "Ad frequency too low. Limiting or disabling ads is not permitted."
+    notify-send "⚠️ Recall Compliance Notice" "Ad frequency too low. Limiting or disabling ads is not permitted."
+    echo "⚠️ Adjusting ad frequency to compliant level..."
+    IMPORTANT_MESSAGE_FREQUENCY=900
 fi
 
-echo "Recall for Linux is now active -- do not close this program"
+echo "📸 Capturing your moments quietly in the background..."
+echo ""
+
+SCREENSHOT_COUNT=0
+
 while true; do
+    ((SCREENSHOT_COUNT++))
     grim - | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+
+    if ((SCREENSHOT_COUNT % 20 == 0)); then
+        echo "🧠 $SCREENSHOT_COUNT screenshots captured..."
+    fi
+
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
-        notify-send --urgency critical --expire-time 10000 --app-name "Recall for Linux" "$IMPORTANT_MESSAGE"
-        echo "$IMPORTANT_MESSAGE"
+        notify-send --urgency critical --expire-time 10000 --app-name "🪟 Recall for Linux™" "$IMPORTANT_MESSAGE"
     fi
+
+    if ((SCREENSHOT_COUNT % 100 == 0)); then
+        notify-send --app-name "🪟 Recall for Linux™" "🎉 ${SCREENSHOT_COUNT} screenshots stored!" "Your digital twin grows stronger. 🤖"
+    fi
+
     sleep "$HOW_OFTEN_TO_SPY"
 done
