@@ -41,3 +41,4 @@ These are all the exciting features coming soon:
 - [ ] 🐍 more AI
 - [ ] ☁️ automatic uploading of all your data the cloud
 - [ ] 🙈 train our LLM's with your data
+- [ ] 🤩 Add more AI, clanker clanker clanker. (see #12)
