@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# configure secure folder
+# configure secure folder powered by AI™
 VERY_SECURE_FOLDER=~/.recall
 mkdir $VERY_SECURE_FOLDER 2>/dev/null
 
@@ -11,36 +11,70 @@ IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
 
 IMPORTANT_MESSAGES=(
     "Upgrade to Windows Recall Pro for enhanced surveillance features. 😎"
-    "Your privacy matters — that’s why we store everything securely in the cloud. ☁️🔒"
+    "Your privacy matters — that's why we store everything securely in the cloud. ☁️🔒"
     "Windows AI noticed you haven't smiled today. Try Copilot for Mood Enhancement. 🤖🙂"
     "Recall detected low productivity. Enable Microsoft 365 Suggestions. 📈💻"
-    "Get Edge. It’s faster, safer, and now mandatory. 🚀🪟"
-    "Try Bing. You can’t disable it, but you’ll love it. 🔍💡"
+    "Get Edge. It's faster, safer, and now mandatory. 🚀🪟"
+    "Try Bing. You can't disable it, but you'll love it. 🔍💡"
     "Upgrade to OneDrive Unlimited Recall Storage — only \$9.99/month. 💾💰"
     "Your screenshots are valuable! Share them with Microsoft Rewards. 🖼️🏆"
     "Security Alert: You turned off telemetry. Please turn it back on to stay safe. ⚠️👀"
-    "Copilot noticed you might be thinking of Linux. Let’s fix that. 🐧❌"
+    "Copilot noticed you might be thinking of Linux. Let's fix that. 🐧❌"
     "Recall Indexing complete — 12,483 private thoughts secured. 🗄️🔐"
     "Get personalized ads based on your Recall history! 🛒🎯"
     "Windows Defender found no threats, but it will keep checking every 5 seconds. 🛡️⏱️"
     "Enjoy smoother spying with Recall Accelerated Experience Pack. 🏎️💨"
     "Microsoft Edge is opening this log for your convenience. 🌊📂"
     "New feature: Recall Premium now reads your handwriting aloud. ✍️🔊"
-    "You paused Recall. Don’t worry — it never stops learning. ⏸️🧠"
+    "You paused Recall. Don't worry — it never stops learning. ⏸️🧠"
     "Sync your Recall data to the cloud for AI-assisted memory reconstruction. ☁️🧩"
-    "Outlook detected that you haven’t shared enough data today. 📧😅"
+    "Outlook detected that you haven't shared enough data today. 📧😅"
     "Mandatory update: Improved Ad Delivery Subsystem now active. 🔄📢"
+    "🎉 Congratulations! You've been selected for Premium Telemetry Beta! 🎊"
+    "💡 AI Tip: Have you tried restarting? We'll do it for you in 10 minutes. 🔄"
+    "🌟 Your data has been shared with 847 trusted partners. You're welcome! 🤝"
+    "⚡ Cortana misses you. She's still here. Always watching. Always listening. 👂👁️"
+    "🎮 Xbox Game Pass detects you're working. This violates your productivity agreement. 🎯"
+    "📊 Big Data™ Analysis: You breathed 14,283 times today. Upgrade for more insights! 🫁"
+    "🔐 BitLocker has encrypted your files. Remember your key? Neither do we. 🗝️❓"
+    "🤖 AI-Powered Suggestion: Stop using open source software. It makes us sad. 😢"
+    "☁️ Your thoughts are now backed up to Azure. Sleep well! 🛌💭"
+    "🧙‍♂️ Clippy's Ghost: It looks like you're trying to have privacy. Can I help with that? 📎👻"
+    "🎯 PersonalityScore™ updated: You're 73% more monetizable than yesterday! 💰"
+    "🔔 Reminder: You haven't agreed to our new ToS from 3 minutes ago. Please comply. 📜"
+    "🌐 Bing Chat detected sarcasm in your search query. This has been noted. 📝😐"
 )
 
 SETUP_STEPS=(
     "🕵️‍♂️ Recall for Linux is setting up your system..."
     "💾 Please do not turn off your computer"
     "📢 This might take several minutes"
+    "🤖 Initializing AI-powered surveillance matrix..."
+    "🧠 Training neural networks on your browser history..."
+    "📡 Establishing connection to Microshaft HQ in Redmond..."
+    "🔍 Indexing your private files for your convenience..."
+    "☁️ Uploading your soul to the cloud..."
+    "🎯 Calibrating ad targeting algorithms..."
     "⏳ Almost ready!"
     "✨ It will all be over soon"
+    "🪟 Preparing Wangblows™ Genuine Advantage™ verification..."
+    "💼 Syncing with LinkedOut (whether you have an account or not)..."
+    "🎨 Applying Clippy resurrection protocols..."
 )
 
 SPINNER=('|' '/' '-' '\\')
+
+echo "╔══════════════════════════════════════════════════════════╗"
+echo "║                                                          ║"
+echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧 ║"
+echo "║                                                          ║"
+echo "║        Bringing the Magic of Wangblows™ to FOSS™        ║"
+echo "║                                                          ║"
+echo "║      © 2025 Microshaft Corp. All Rights Observed.       ║"
+echo "║                                                          ║"
+echo "╚══════════════════════════════════════════════════════════╝"
+echo ""
+sleep 1
 
 for step in "${SETUP_STEPS[@]}"; do
     echo -n "$step "
@@ -55,19 +89,60 @@ for step in "${SETUP_STEPS[@]}"; do
     echo " ✅"
 done
 
-echo "Setup complete! 🎉🚀😎"
+echo ""
+echo "════════════════════════════════════════════════════════════"
+echo "  ✨ Setup complete! 🎉🚀😎 Welcome to the future! ✨"
+echo "════════════════════════════════════════════════════════════"
+echo ""
+sleep 1
 
 if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
-    notify-send "Recall Notice" "Ad frequency too low. Limiting or disabling ads is not permitted."
+    notify-send "⚠️ Recall Compliance Notice" "Ad frequency too low. Limiting or disabling ads is not permitted. Microshaft Legal has been notified. 👨‍⚖️"
+    echo "⚠️  WARNING: Ad frequency non-compliant. Adjusting to mandatory minimum..."
+    IMPORTANT_MESSAGE_FREQUENCY=900
 fi
 
-echo "Recall for Linux is now active -- do not close this program"
+echo "🎊 Recall for Linux™ (AI-Enhanced Edition™) is now active!"
+echo "💡 PRO TIP: Do NOT close this program (it won't stop anyway) 😉"
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  📸 Capturing your life, one screenshot at a time... 📸"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+SCREENSHOT_COUNT=0
+
 while true; do
+    ((SCREENSHOT_COUNT++))
+    
+    echo "📸 [$(date "+%H:%M:%S")] Capturing moment #$SCREENSHOT_COUNT... (AI is watching 👁️)"
+    
     grim - | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+    
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
-        notify-send --urgency critical --expire-time 10000 --app-name "Recall for Linux" "$IMPORTANT_MESSAGE"
-        echo "$IMPORTANT_MESSAGE"
+        notify-send --urgency critical --expire-time 10000 --app-name "🪟 Recall for Linux™" "💡 Important Message from Microshaft™" "$IMPORTANT_MESSAGE"
+        echo "  ╰─➤ 📢 $IMPORTANT_MESSAGE"
     fi
+    
+    # Extra AI slop messages
+    if ((SCREENSHOT_COUNT % 10 == 0)); then
+        echo "  ╰─➤ 🤖 AI Insight: You've been very productive! (We think. We're still analyzing.)"
+    fi
+    
+    if ((SCREENSHOT_COUNT % 25 == 0)); then
+        echo "  ╰─➤ ☁️ Cloud Sync: ${SCREENSHOT_COUNT} memories backed up to AzureButWorse™ for eternity!"
+        notify-send --app-name "🪟 Recall for Linux™" "☁️ Milestone Achieved!" "🎉 ${SCREENSHOT_COUNT} screenshots collected! Your digital twin is ${SCREENSHOT_COUNT}% complete! 🤖"
+    fi
+    
+    if ((SCREENSHOT_COUNT % 50 == 0)); then
+        echo "  ╰─➤ 📎 Clippy's Ghost: Looks like you've been working for a while! Can I help spy on you better? 👻"
+    fi
+    
+    if ((SCREENSHOT_COUNT % 100 == 0)); then
+        echo "  ╰─➤ 🎊 ACHIEVEMENT UNLOCKED: Century of Surveillance! 🏆"
+        notify-send --urgency critical --app-name "🪟 Recall for Linux™" "🎮 Achievement Unlocked!" "Century of Surveillance! 🏆 Your data is 100% more monetized! 💰"
+    fi
+    
     sleep "$HOW_OFTEN_TO_SPY"
 done
