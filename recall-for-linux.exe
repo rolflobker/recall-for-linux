@@ -62,8 +62,18 @@ if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
 fi
 
 echo "Recall for Linux is now active -- do not close this program"
+
+# Detect display server
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    SCREENSHOT_CMD="grim -"
+    echo "Detected Wayland, using grim for screenshots."
+else
+    SCREENSHOT_CMD="maim -"
+    echo "Detected X11, using maim for screenshots."
+fi
+
 while true; do
-    grim - | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+    $SCREENSHOT_CMD | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
         notify-send --urgency critical --expire-time 10000 --app-name "Recall for Linux" "$IMPORTANT_MESSAGE"
