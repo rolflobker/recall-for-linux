@@ -38,6 +38,7 @@ These are all the exciting features coming soon:
 - [ ] 󰖠 add webcam pictures to really capture the moment
 - [ ] 💩 AI
 - [ ] 🎤 always-on audio recording
+- [ ] 🔮 Windows Foresight. See what’s next - before you do.
 - [ ] 🐍 more AI
 - [ ] ☁️ automatic uploading of all your data the cloud
 - [ ] 🙈 train our LLM's with your data
