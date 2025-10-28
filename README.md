@@ -5,7 +5,7 @@ Do you miss the convenience of Microsoft spying on you and keeping track of ever
 
 Fear not! This amazing tool will bring back all those great Windows Recall features that you have been missing:
 
-- 🌲 Stores all you sensitive data in an convenient, easily accessible database
+- 🌲 Stores all your sensitive data in a convenient, easily accessible database
 - ⏲️ 24/7 screencaptures of everything you do
 - 🥳 Image to text conversion with OCR
 - 😇 Index and store everything your friends tell you over chat apps or e-mail; if it's on your screen we've got you covered!
@@ -16,7 +16,7 @@ Forgot about that website you visited 3 weeks ago, late in the evening while dru
 
 # Installation
 
-Unfortunately Linux lacks to ability for us to automatically, silently install and enable this on your computer without your consent.
+Unfortunately Linux lacks the ability for us to automatically, silently install and enable this on your computer without your consent.
 
 But we've made the installation process as frictionless as possible.
 
