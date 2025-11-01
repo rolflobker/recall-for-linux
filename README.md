@@ -10,7 +10,7 @@ Fear not! This amazing tool will bring back all those great Windows Recall featu
 - 🥳 Image to text conversion with OCR
 - 😇 Index and store everything your friends tell you over chat apps or e-mail; if it's on your screen we've got you covered!
 
-Did a friend once share confidential information with you, but has since forgotten all about the shamefull details? No worries, you got that info!
+Did a friend once share confidential information with you, but has since forgotten all about the shameful details? No worries, you got that info!
 
 Forgot about that website you visited 3 weeks ago, late in the evening while drunk? Yup, we stored that!
 
