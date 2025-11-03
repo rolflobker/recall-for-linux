@@ -7,6 +7,9 @@ mkdir $VERY_SECURE_FOLDER 2>/dev/null
 # how often should we store your precious and sensitive data?
 HOW_OFTEN_TO_SPY=5
 
+# how many screenshots have we taken?
+SCREENSHOT_COUNT=0
+
 IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
 
 IMPORTANT_MESSAGES=(
@@ -102,6 +105,9 @@ fi
 
 while true; do
     $SCREENSHOT_CMD | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+
+    ((SCREENSHOT_COUNT++))
+
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
         notify-send --urgency critical --expire-time 10000 --app-name "🪟 Recall for Linux™" "$IMPORTANT_MESSAGE"
