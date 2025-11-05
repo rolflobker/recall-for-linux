@@ -63,7 +63,7 @@ SETUP_STEPS=(
 SPINNER=('|' '/' '-' '\\')
 
 echo "╔══════════════════════════════════════════════════════════╗"
-echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧 ║"
+echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧  ║"
 echo "║      Bringing the Magic of Wangblows™ to FOSS™           ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
