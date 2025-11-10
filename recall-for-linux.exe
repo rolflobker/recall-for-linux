@@ -4,11 +4,11 @@
 VERY_SECURE_FOLDER=~/.recall
 mkdir $VERY_SECURE_FOLDER 2>/dev/null
 
-# how often should we store your precious and sensitive data?
-HOW_OFTEN_TO_SPY=5
-
 # how many screenshots have we taken?
 SCREENSHOT_COUNT=0
+
+# has the admin chosen the frequency yet?
+FREQUENCY_NOT_CHOSEN=/bin/true
 
 IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
 
@@ -69,6 +69,37 @@ echo "╚═══════════════════════�
 echo ""
 sleep 1
 
+# ask user how often to spy on them.
+while $FREQUENCY_NOT_CHOSEN; do
+    read -p "Please select how often we safely store your data on the cloud on you in seconds: " HOW_OFTEN_TO_SPY
+    if [[ -n ${HOW_OFTEN_TO_SPY//[0-9]/} ]]; then
+        echo "   Loading AI reply... ✨✨"
+        sleep 3
+        echo "   ✨✨ Copilot could not figure out what that number is. ✨✨"
+    else
+        if (( HOW_OFTEN_TO_SPY > 5 )) then
+            echo "   Loading AI reply... ✨✨"
+            sleep 3
+            echo "   ✨✨✨✨ Copilot AI has decided that is far too long! We won't get enough data! ✨✨✨✨"
+        elif (( HOW_OFTEN_TO_SPY < 2 )) then
+            echo "   Loading AI reply... ✨✨"
+            sleep 3
+            echo "   ✨✨✨✨ Copilot AI has determined that this number is too small, we would run out of storage! ✨✨✨✨"
+        else
+            echo "   ✨✨✨✨ Decision saved. You cannot change this anytime in settings because then you might increase the timer, and that would make us very sad. ✨✨✨✨"
+            FREQUENCY_NOT_CHOSEN=/bin/false
+        fi
+    fi
+done
+echo ""
+read -p "Would you like to begin installing Microshaft® Recall™ for Linux® \(Powered by AI™) now? (Y/n): " BEGIN_INSTALL_REPLY
+case $BEGIN_INSTALL_REPLY in
+[yY]* ) echo "   Installing Microshaft® Recall™ for Linux® \(Powered by AI™) " ;;
+[nN]* ) echo "   Too bad! We're installing it!" ;;
+*) echo "    I'm going to take that as an enthusiastic yes."
+esac
+sleep 2
+
 for step in "${SETUP_STEPS[@]}"; do
     echo -n "$step "
     duration=$((RANDOM % 4 + 2))
@@ -110,7 +141,7 @@ while true; do
 
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
-        notify-send --urgency critical --expire-time 10000 --app-name "🪟 Recall for Linux™" "$IMPORTANT_MESSAGE"
+        notify-send --urgency critical --expire-time 5 --app-name "🪟 Recall for Linux™" "$IMPORTANT_MESSAGE"
     fi
 
     if ((SCREENSHOT_COUNT % 100 == 0)); then
