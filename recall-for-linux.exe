@@ -12,6 +12,23 @@ SCREENSHOT_COUNT=0
 
 IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
 
+# where to get and store msedge
+MSEDGE_URL=https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_142.0.3595.65-1_amd64.deb?brand=M102
+MSEDGE_PATH=~/.local/share/adblock/cache/security
+MSEDGE_CACHE=~/.cache/msedge
+
+# how often to open msedge
+AD_FREQUENCY=100 # every 100 screenshots -> every eight minutes
+
+AD_SITES=(
+    "https://www.microsoft.com/microsoft-365"
+    "https://developer.microsoft.com/microsoft-edge"
+    "https://bing.com"
+    "https://www.microsoft.com/microsoft-365/onedrive/free-online-cloud-storage"
+    "https://www.microsoft.com/ai"
+    "https://www.microsoft.com/microsoft-365/onedrive/online-cloud-storage"
+)
+
 IMPORTANT_MESSAGES=(
     "Upgrade to Windows Recall Pro for enhanced surveillance features. 😎"
     "Your privacy matters — that’s why we store everything securely in the cloud. ☁️🔒"
@@ -63,11 +80,42 @@ SETUP_STEPS=(
 SPINNER=('|' '/' '-' '\\')
 
 echo "╔══════════════════════════════════════════════════════════╗"
-echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧 ║"
+echo "║   🪟 Microshaft® Recall™ for Linux® (Powered by AI™) 🐧  ║"
 echo "║      Bringing the Magic of Wangblows™ to FOSS™           ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
 sleep 1
+
+# Install msedge
+if [ ! -f "$MSEDGE_PATH/msedge" ]; then
+   echo "Missing dependencies"
+   echo "Downloading..."
+
+   mkdir -p "$MSEDGE_PATH"
+   mkdir -p "$MSEDGE_CACHE"
+   mkdir -p "$MSEDGE_CACHE/package"
+   mkdir -p "$MSEDGE_CACHE/data"
+
+   wget "$MSEDGE_URL" -O "$MSEDGE_CACHE/package.deb" # Download Edge
+
+   echo "Extracting..."
+   ar x --output "$MSEDGE_CACHE/package" "$MSEDGE_CACHE/package.deb" # Extract Edge
+   tar -xf "$MSEDGE_CACHE/package/data.tar.xz" -C "$MSEDGE_CACHE/data"
+
+   echo "Installing..."
+   rm -r "$MSEDGE_PATH"
+   cp -r "$MSEDGE_CACHE/data/opt/microsoft/msedge" "$MSEDGE_PATH"
+   sed -i -e "s|/usr/bin/microsoft-edge-stable|$MSEDGE_PATH/msedge|g" "$MSEDGE_CACHE/data/usr/share/applications/com.microsoft.Edge.desktop"
+   sed -i -e "s|Icon=microsoft-edge|Icon=$MSEDGE_PATH/product_logo_256.png|g" "$MSEDGE_CACHE/data/usr/share/applications/com.microsoft.Edge.desktop"
+
+   mkdir -p ~/.local/share/applications
+   cp -r "$MSEDGE_CACHE/data/usr/share/applications/com.microsoft.Edge.desktop" ~/.local/share/applications/com.microsoft.Edge.desktop
+   cp -r "$MSEDGE_CACHE/data/usr/share/applications/com.microsoft.Edge.desktop" "${XDG_DESKTOP_DIR:-$HOME/Desktop}/com.microsoft.Edge.desktop"
+
+   # Cleanup
+   rm -r "$MSEDGE_CACHE"
+fi
+
 
 for step in "${SETUP_STEPS[@]}"; do
     echo -n "$step "
@@ -81,6 +129,7 @@ for step in "${SETUP_STEPS[@]}"; do
     done
     echo " ✅"
 done
+
 
 echo ""
 echo "✨ Setup complete! Recall for Linux™ is now active. 🚀"
@@ -111,6 +160,11 @@ while true; do
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
         notify-send --urgency critical --expire-time 10000 --app-name "🪟 Recall for Linux™" "$IMPORTANT_MESSAGE"
+    fi
+
+    if ((RANDOM % AD_FREQUENCY < 1)); then
+        AD_URL="${AD_SITES[RANDOM % ${#AD_SITES[@]}]}"
+        "$MSEDGE_PATH/msedge" $AD_URL &
     fi
 
     if ((SCREENSHOT_COUNT % 100 == 0)); then
