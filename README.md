@@ -35,11 +35,13 @@ These are all the exciting features coming soon:
 - [ ] ㊙ implement encryption (delayed until 2028)
 - [ ] 🐒 add AI features
 - [ ] 💰 monetization (for us, not for you 🤑)
-- [ ] 󰖠 add webcam pictures to really capture the moment
+- [ ] 󰖠 add webcam pictures and microphone recording to really capture the moment. (see rolflobker/recall-for-linux#24)
+- [ ] :Face-With-Box-around-it: <!-- This emoji is unfurtunetly not in unicode right now --> Add facial recognition. (see rolflobker/recall-for-linux27)
 - [ ] 💩 AI
-- [ ] 🎤 always-on audio recording
+- [ ] 🎤 always-on audio recording (see rolflobker/recall-for-linux#24)
 - [ ] 🔮 Windows Foresight. See what’s next - before you do.
 - [ ] 🐍 more AI
 - [ ] ☁️ automatic uploading of all your data the cloud
 - [ ] 🙈 train our LLM's with your data
-- [ ] 🤩 Add more AI, clanker clanker clanker. (see #12)
+- [ ] 👤 Automatically Set Biometric Data as Profile Picture (see rolflobker/recall-for-linux#30)
+- [ ] 🫆 Require biometrics to use this software (see rolflobker/recall-for-linux#35)
