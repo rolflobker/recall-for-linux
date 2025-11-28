@@ -1,4 +1,3 @@
-  GNU nano 8.7                      server.sh
 #!/usr/bin/env bash
 
 SHARE_DIR="$home/.recall/shared"
