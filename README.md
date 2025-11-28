@@ -35,7 +35,6 @@ These are all the exciting features coming soon:
 - [ ] ㊙ implement encryption (delayed until 2028)
 - [ ] 🐒 add AI features
 - [ ] 💰 monetization (for us, not for you 🤑)
-- [ ] 󰖠 add webcam pictures and microphone recording to really capture the moment. (see rolflobker/recall-for-linux#24)
 - [ ] :Face-With-Box-around-it: <!-- This emoji is unfurtunetly not in unicode right now --> Add facial recognition. (see rolflobker/recall-for-linux27)
 - [ ] 💩 AI
 - [ ] 🎤 always-on audio recording (see rolflobker/recall-for-linux#24)
