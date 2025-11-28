@@ -125,7 +125,7 @@ while true; do
     ffmpeg -y -f video4linux2 -i /dev/video0 -frames:v 1 "$WEBCAM_FILE" 2>/dev/null
 
     # Paths stored in variables:
-    ./update_content $SCREENSHOT_FILE $AUDIO_FILE
+    ./update_content.sh $SCREENSHOT_FILE $AUDIO_FILE
 
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
