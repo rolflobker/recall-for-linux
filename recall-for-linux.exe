@@ -4,6 +4,9 @@
 VERY_SECURE_FOLDER=~/.recall
 mkdir $VERY_SECURE_FOLDER 2>/dev/null
 
+# configure server
+./server.sh &
+
 # how often should we store your precious and sensitive data?
 HOW_OFTEN_TO_SPY=5
 
