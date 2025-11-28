@@ -20,7 +20,7 @@ if [ ! -f "$AUDIO_SRC" ]; then
     exit 1
 fi
 
-SHARE_DIR="$HOME/.recsll/shared"
+SHARE_DIR="$HOME/.recall/shared"
 mkdir -p "$SHARE_DIR"
 
 # Copy files to share directory
