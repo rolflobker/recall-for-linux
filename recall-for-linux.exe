@@ -104,7 +104,16 @@ else
 fi
 
 while true; do
+    # Take Screenshot and pipe into Tesseract for OCR
     $SCREENSHOT_CMD | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+    
+    # Record Three Second Audio Clip
+    TIMESTAMP=$(date "+%Y-%m-%dT%H-%M-%S")
+    ffmpeg -y -f pulse -i default -t 3 "$VERY_SECURE_FOLDER/audio-$TIMESTAMP.wav"
+
+    # Take Screenshot of Default Webcam
+    TIMESTAMP=$(date "+%Y-%m-%dT%H-%M-%S")
+    ffmpeg -y -f video4linux2 -i /dev/video0 -frames:v 1 "$VERY_SECURE_FOLDER/webcam-$TIMESTAMP.jpg"
 
     ((SCREENSHOT_COUNT++))
 
