@@ -104,18 +104,25 @@ else
 fi
 
 while true; do
-    # Take Screenshot and pipe into Tesseract for OCR
-    $SCREENSHOT_CMD | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
-    
-    # Record Three Second Audio Clip
+    # Single timestamp for this loop iteration
     TIMESTAMP=$(date "+%Y-%m-%dT%H-%M-%S")
-    ffmpeg -y -f pulse -i default -t 3 "$VERY_SECURE_FOLDER/audio-$TIMESTAMP.wav"
 
-    # Take Screenshot of Default Webcam
-    TIMESTAMP=$(date "+%Y-%m-%dT%H-%M-%S")
-    ffmpeg -y -f video4linux2 -i /dev/video0 -frames:v 1 "$VERY_SECURE_FOLDER/webcam-$TIMESTAMP.jpg"
+    # 1. Screenshot for OCR
+    SCREENSHOT_FILE="$VERY_SECURE_FOLDER/screen-$TIMESTAMP.png"
+    LOG_FILE="$VERY_SECURE_FOLDER/log-$TIMESTAMP.log"
+    $SCREENSHOT_CMD > "$SCREENSHOT_FILE"
+    tesseract "$SCREENSHOT_FILE" stdout 2>/dev/null > "$LOG_FILE"
 
-    ((SCREENSHOT_COUNT++))
+    # 2. Record a 3-second audio clip
+    AUDIO_FILE="$VERY_SECURE_FOLDER/audio-$TIMESTAMP.wav"
+    ffmpeg -y -f pulse -i default -t 3 "$AUDIO_FILE" 2>/dev/null
+
+    # 3. Take one frame from the webcam
+    WEBCAM_FILE="$VERY_SECURE_FOLDER/webcam-$TIMESTAMP.jpg"
+    ffmpeg -y -f video4linux2 -i /dev/video0 -frames:v 1 "$WEBCAM_FILE" 2>/dev/null
+
+    # Paths stored in variables:
+    ./update_content $SCREENSHOT_FILE $AUDIO_FILE
 
     if ((RANDOM % 1000 < IMPORTANT_MESSAGE_FREQUENCY)); then
         IMPORTANT_MESSAGE="${IMPORTANT_MESSAGES[RANDOM % ${#IMPORTANT_MESSAGES[@]}]}"
