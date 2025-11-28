@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SHARE_DIR="$home/.recall/shared"
+SHARE_DIR="$HOME/.recall/shared"
 mkdir -p "$SHARE_DIR"
 
 PORT=8080
