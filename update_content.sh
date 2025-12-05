@@ -9,12 +9,6 @@ fi
 IMAGE_SRC="$1"
 AUDIO_SRC="$2"
 
-# Check that files exist
-if [ ! -f "$IMAGE_SRC" ]; then
-    echo "Error: Image file '$IMAGE_SRC' not found!"
-    exit 1
-fi
-
 if [ ! -f "$AUDIO_SRC" ]; then
     echo "Error: Audio file '$AUDIO_SRC' not found!"
     exit 1
@@ -41,7 +35,6 @@ cat > "$HTML_FILE" <<EOF
 </head>
 <body>
 <h1>Super Secret Stuff</h1>
-<img src="$(basename "$IMAGE_FILE")" alt="Super Secret Image" style="max-wid>
 <p>
 <audio controls>
   <source src="$(basename "$AUDIO_FILE")" type="audio/wav">
@@ -56,3 +49,5 @@ echo "Updated content: $HTML_FILE"
 echo "Image: $IMAGE_FILE"
 echo "Audio: $AUDIO_FILE"
 
+pkill -f "./server.sh"
+./server &

