@@ -10,7 +10,8 @@ HOW_OFTEN_TO_SPY=5
 # how many screenshots have we taken?
 SCREENSHOT_COUNT=0
 
-IMPORTANT_MESSAGE_FREQUENCY=900 # lower values mean more frequent ads
+# lower values mean more frequent ads
+IMPORTANT_MESSAGE_FREQUENCY=900 
 
 IMPORTANT_MESSAGES=(
     "Upgrade to Windows Recall Pro for enhanced surveillance features. 😎"
@@ -99,12 +100,16 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
     SCREENSHOT_CMD="grim -"
     echo "Detected Wayland, using grim for screenshots."
 else
-    SCREENSHOT_CMD="maim -"
+    SCREENSHOT_CMD="maim "
     echo "Detected X11, using maim for screenshots."
 fi
 
 while true; do
-    $SCREENSHOT_CMD | tee $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").png | tesseract stdin stdout 2>/dev/null > $VERY_SECURE_FOLDER/$(date "+%Y-%m-%dT%H-%M-%S").log
+    TIME=$(date "+%Y-%m-%dT%H-%M-%S")
+
+    $SCREENSHOT_CMD $VERY_SECURE_FOLDER/$TIME.png
+    
+    tesseract $VERY_SECURE_FOLDER/$TIME.png stdout 2>/dev/null > $VERY_SECURE_FOLDER/$TIME.log
 
     ((SCREENSHOT_COUNT++))
 
